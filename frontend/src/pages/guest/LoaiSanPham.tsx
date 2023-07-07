@@ -1,13 +1,12 @@
 import React from 'react';
-import { styled, makeStyles } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct, getTypeProduct } from "../../redux/actions/user";
 import { RootState } from "../../redux/reducers";
 import { AppBar, Box, Badge, Toolbar, Typography, InputAdornment, OutlinedInput, Button, Divider, Grid } from '@mui/material';
 
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./SlideShow.css";
-import { data } from "./data"
 
 import { IProduct } from "../../redux/types/product";
 import { ITypeProduct } from "../../redux/types/typeproduct";
@@ -30,48 +29,6 @@ const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
     },
 }));
 
-const useStyles = makeStyles((theme) => ({
-    textfield: {
-        '& .MuiSelect-select': {
-            color: 'black', fontSize: '12px'
-        },
-        '& .MuiSvgIcon-root': {
-            fontSize: '20px', paddingRight: '2px'
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderRadius: '20px',
-            },
-            '&.Mui-focused fieldset': {
-                border: "1px solid black",
-            }
-        },
-        '& label.Mui-focused': {
-            color: 'black',
-        },
-        '& fieldset': {
-            borderRadius: '30px',
-            height: "46px"
-        },
-
-    },
-    hoverDetail: {
-        '&: hover': {
-            color: 'green',
-        },
-    },
-    typeProduct: {
-        border: "2px solid #0066BF"
-    },
-    nameTypeProduct: {
-        backgroundColor: "#0066BF",
-        fontSize: "16px",
-        fontFamily: "Roboto",
-        color: "white",
-        padding: "10px 0px"
-    },
-}))
-
 const StyledRoot = styled(AppBar)(() => ({
     boxShadow: 'none',
     width: '100%',
@@ -79,33 +36,17 @@ const StyledRoot = styled(AppBar)(() => ({
     fontWeight: 'bold',
 }));
 
-interface RouteParams {
-    id: string
-}
-
-const dataTypeProduct = [
-    "Bồn Inox Bình Minh TITAN",
-    "Máy Nước Nóng Năng Lượng Mặt Trời Bình Minh TITAN",
-    "Máy Nước Nóng Năng Lượng Mặt Trời Bình Minh NANO",
-    "Chậu Rửa TITAN",
-    "Vòi sen",
-]
-
 const Guest: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
     const [localItems, setLocalItems] = React.useState(JSON.parse(localStorage.getItem("productList")!) || []);
     const mapProductList = localItems.flatMap((arr: any) => arr)
-    const params = useParams<RouteParams>();
 
     const [filterName, setFilterName] = React.useState('');
 
     const [products, setProducts] = React.useState<IProduct[]>([]);
     const [typeProducts, setTypeProducts] = React.useState<ITypeProduct[]>([]);
     const user = useSelector((state: RootState) => state.user);
-
-    const firstElement = Array.from(products.map((product: any) => product.typeProduct.nameTypeProduct))[0];
-    console.log(firstElement);
 
     React.useEffect(() => {
         dispatch(getProduct());
@@ -118,14 +59,14 @@ const Guest: React.FC = (): JSX.Element => {
     React.useEffect(() => {
         setProducts(() =>
             user?.products?.filter((product: any) =>
-                product.typeProduct._id == params.id
+                product.nameProduct
             ));
     }, [user]);
     React.useEffect(() => {
         setTypeProducts(() => user?.typeproducts?.filter((typeproduct: any) => typeproduct.nameTypeProduct));
     }, [user]);
 
-    const handleClick = (product: any, id: any, nameProduct: any, image: any, price: any) => {
+    const handleClick = (product: any, id: any, nameProduct: any, image: any, price: any, nameTypeProduct: any) => {
         let productList = localStorage.getItem("productList");
         var sameProduct = product.map((product: any) => product.nameProduct)
         if (productList && !mapProductList.some((product: any) => product.nameProduct.includes(sameProduct))) {
@@ -133,6 +74,7 @@ const Guest: React.FC = (): JSX.Element => {
             arr.push({
                 id: id,
                 nameProduct: nameProduct,
+                nameTypeProduct: nameTypeProduct,
                 image: image,
                 price: price,
                 quantity: 1,
@@ -142,6 +84,7 @@ const Guest: React.FC = (): JSX.Element => {
             setLocalItems([...localItems, {
                 id: id,
                 nameProduct: nameProduct,
+                nameTypeProduct: nameTypeProduct,
                 image: image,
                 price: price,
                 quantity: 1,
@@ -151,6 +94,7 @@ const Guest: React.FC = (): JSX.Element => {
             localStorage.setItem("productList", JSON.stringify([{
                 id: id,
                 nameProduct: nameProduct,
+                nameTypeProduct: nameTypeProduct,
                 image: image,
                 price: price,
                 quantity: 1,
@@ -159,6 +103,7 @@ const Guest: React.FC = (): JSX.Element => {
             setLocalItems([...localItems, {
                 id: id,
                 nameProduct: nameProduct,
+                nameTypeProduct: nameTypeProduct,
                 image: image,
                 price: price,
                 quantity: 1,
@@ -241,7 +186,7 @@ const Guest: React.FC = (): JSX.Element => {
                                         <Box className="subnav">
                                             {typeProducts.map((typeProduct: any) =>
                                                 <li>
-                                                    <Link to={`/loaiSP1/${typeProduct._id}`}>
+                                                    <Link to={`/loaiSP2/${typeProduct._id}`}>
                                                         <Box className="boxA" sx={{ color: "#333333", fontWeight: 400, fontSize: 14, fontFamily: "Roboto" }}>
                                                             {typeProduct.nameTypeProduct}
                                                         </Box>
@@ -275,14 +220,6 @@ const Guest: React.FC = (): JSX.Element => {
                     </StyledRoot>
                 </Box>
                 <Box sx={{ textAlign: "center", marginTop: "60px" }}>
-                    <Typography style={{ fontFamily: "Roboto", fontSize: "25px", fontWeight: "bold", color: "black", marginBottom: "10px" }}>
-                        {dataTypeProduct.filter(typeproduct => typeproduct === firstElement).map((typeproduct: any) =>
-                            typeproduct
-                        )}
-                    </Typography>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <Divider style={{ marginBottom: "20px", width: "200px", backgroundColor: "black" }} />
-                    </Box>
 
                     <Box sx={{ borderColor: "#0066BF", margin: "auto", maxWidth: "1500px" }} display={'flex'}>
                         <Grid container style={{ margin: "0px 100px 0px 160px" }}>
@@ -304,7 +241,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             </Button>
                                         </Link>
 
-                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
                                             Mua Hàng
                                         </Button>
                                     </Box>

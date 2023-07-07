@@ -10,12 +10,14 @@ import SideBar from "./layouts/navigation/sidebar";
 import Routes from "./components/routing/Routes";
 
 import { setAdminAuthToken } from "./utils/headers";
+import { setUserAuthToken } from "./utils/headers";
 
-// import { loadAdmin } from "./redux/actions/admin";
+
+import { loadAdmin } from "./redux/actions/admin";
 import { loadUser } from "./redux/actions/user";
 
-// if (localStorage.admin__token) setAdminAuthToken(localStorage.admin__token);
-if (localStorage.user__token) setAdminAuthToken(localStorage.user__token);
+if (localStorage.admin__token) setAdminAuthToken(localStorage.admin__token);
+if (localStorage.user__token) setUserAuthToken(localStorage.user__token);
 
 const StyledRoot = styled('div')({
   display: 'flex',

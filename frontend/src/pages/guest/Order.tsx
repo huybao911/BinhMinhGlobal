@@ -199,9 +199,9 @@ const Order: React.FC = (): JSX.Element => {
                                         padding: "0 24px",
                                     }} to="/">TRANG CHỦ</Link></li>
                                     <li>
-                                        <a href="#" style={{ padding: "0 24px", }}>
+                                        <Link to="/loaiSP" style={{ padding: "0 24px", }}>
                                             SẢN PHẨM
-                                        </a>
+                                        </Link>
                                         <Box className="subnav">
                                             {typeProducts.map((typeProduct: any) =>
                                                 <li>
@@ -300,7 +300,10 @@ const Order: React.FC = (): JSX.Element => {
                             </tbody>
                         </table>
                     ) : (
-                        <Box sx={{ marginTop: "50px" }}>Không có sản phẩm trong giỏ hàng</Box>
+                        <Box>
+                            <Box sx={{ marginTop: "50px", fontSize: "30px", textAlign: "center", fontWeight: "bold", color: "#0066BF" }}>Hiện tại không có sản phẩm trong giỏ hàng</Box>
+                            <img src="/no-product.gif" />
+                        </Box>
                     )}
                 </Box>
 
@@ -333,10 +336,10 @@ const Order: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>ĐƯỜNG DẪN NHANH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     TRANG CHỦ
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     SẢN PHẨM
                                 </Box>
                                 <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>

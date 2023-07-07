@@ -402,7 +402,7 @@ const Cart: React.FC = (): JSX.Element => {
                                         <FormLabel style={{ fontWeight: "bold", fontSize: "14px", margin: "10px 0" }}>
                                             Ghi chú (tùy chọn)
                                         </FormLabel>
-                                        <textarea style={{ width: 500, height: 80, fontFamily: "Roboto", marginBottom:"50px" }}
+                                        <textarea style={{ width: 500, height: 80, fontFamily: "Roboto", marginBottom: "50px" }}
                                             placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
                                             onChange={handleChange}
                                             onBlur={handleBlur}
@@ -470,7 +470,7 @@ const Cart: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(productMapPrice.reduce((a: any, b: any) => a + b))} VNĐ
                                             </Box>
                                         </Box>
-                                        <Box sx={{ margin: "20px 0 0 20px" }}  display={'flex'} flexDirection={'row'}>
+                                        <Box sx={{ margin: "20px 0 0 20px" }} display={'flex'} flexDirection={'row'}>
                                             <Box>
                                                 <Button style={{
                                                     color: "#0066BF",
@@ -482,15 +482,15 @@ const Cart: React.FC = (): JSX.Element => {
                                                     textTransform: "inherit",
                                                 }}
                                                     onClick={history.goBack}
-                                                >  <ArrowBackIosIcon style={{color: "#0066BF", width:"13px", marginBottom:"1px"}}/>Quay về giỏ hàng</Button>
+                                                >  <ArrowBackIosIcon style={{ color: "#0066BF", width: "13px", marginBottom: "1px" }} />Quay về giỏ hàng</Button>
                                             </Box>
                                             <Box flexGrow={1} />
-                                            <Box sx={{marginBottom:"30px"}}>
+                                            <Box sx={{ marginBottom: "30px" }}>
                                                 <Button
                                                     type='submit'
                                                     style={{
                                                         color: "white",
-                                                        backgroundColor:"#0066BF",
+                                                        backgroundColor: "#0066BF",
                                                         height: "34px",
                                                         width: "120px",
                                                         fontSize: "12px",
@@ -539,10 +539,10 @@ const Cart: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>ĐƯỜNG DẪN NHANH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     TRANG CHỦ
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     SẢN PHẨM
                                 </Box>
                                 <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>

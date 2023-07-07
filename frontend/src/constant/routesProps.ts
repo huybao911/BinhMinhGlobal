@@ -29,6 +29,14 @@ const routesProps: ROUTES[] = [
   },
   {
     name: "loaiSP",
+    path: "/loaiSP",
+    component: React.lazy(() => import("../pages/guest/LoaiSanPham")),
+    exact: true,
+    keyRole: "guest",
+    auth: false,
+  },
+  {
+    name: "loaiSP1",
     path: "/loaiSP1/:id",
     component: React.lazy(() => import("../pages/guest/LoaiSanPham1")),
     exact: true,
@@ -36,7 +44,7 @@ const routesProps: ROUTES[] = [
     auth: false,
   },
   {
-    name: "loaiSP",
+    name: "loaiSP2",
     path: "/loaiSP2/:id",
     component: React.lazy(() => import("../pages/guest/LoaiSanPham2")),
     exact: true,

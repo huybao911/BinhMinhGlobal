@@ -96,7 +96,7 @@ const DetailSanPham: React.FC = (): JSX.Element => {
     const [typeProducts, setTypeProducts] = React.useState<ITypeProduct[]>([]);
     const user = useSelector((state: RootState) => state.user);
 
-    const handleClick = (product: any, id: any, nameProduct: any, image: any, price: any, nameTypeProduct:any) => {
+    const handleClick = (product: any, id: any, nameProduct: any, image: any, price: any, nameTypeProduct: any) => {
         let productList = localStorage.getItem("productList");
         var sameProduct = product.map((product: any) => product.nameProduct)
         if (productList && !mapProductList.some((product: any) => product.nameProduct.includes(sameProduct))) {
@@ -230,7 +230,7 @@ const DetailSanPham: React.FC = (): JSX.Element => {
                                             backgroundColor: "white",
                                             color: "#0066bf",
                                             padding: "0 24px",
-                                        }} to={"/"}>SẢN PHẨM</Link>
+                                        }} to={"/loaiSP"}>SẢN PHẨM</Link>
                                         <Box className="subnav">
                                             {typeProducts.map((typeProduct: any) =>
                                                 <li>
@@ -340,10 +340,10 @@ const DetailSanPham: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>ĐƯỜNG DẪN NHANH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     TRANG CHỦ
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
                                     SẢN PHẨM
                                 </Box>
                                 <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>

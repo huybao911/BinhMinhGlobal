@@ -5,12 +5,10 @@ import { getUsers, deleteUser } from "../../redux/actions/admin";
 import { RootState } from "../../redux/reducers";
 import { IUser } from "../../redux/types/user";
 import { Box,TableSortLabel, Toolbar, OutlinedInput, InputAdornment, Button, Card, Container, Popover, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from "@mui/material";
-import { Link } from 'react-router-dom';
 import UserForm from "./UserForm";
 // @mui
 import EditIcon from '@mui/icons-material/Edit';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { visuallyHidden } from '@mui/utils';
 
