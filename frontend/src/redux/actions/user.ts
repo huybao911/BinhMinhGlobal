@@ -4,7 +4,7 @@ import types from "./types";
 import { setUserAuthToken } from "../../utils/headers";
 import { UserActions } from "../../redux/types/user";
 
-const URI = "http://localhost:5000/api/v1/user";
+const URI = "https://binhminhglobal-backend.onrender.com/api/v1/user";
 
 // LOAD USER
 export const loadUser = () => async (dispatch: Dispatch<UserActions>) => {
