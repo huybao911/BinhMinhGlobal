@@ -215,13 +215,13 @@ const Cart: React.FC = (): JSX.Element => {
                     <Box display={'flex'} flexDirection={'row'} sx={{ padding: "0px 170px" }}>
                         <Box flexGrow={1}>
                             <ul id="nav">
-                                <li><a style={{
+                                <li><Link style={{
                                     padding: "0 24px",
-                                }} href="#">TRANG CHỦ</a></li>
+                                }} to={"/"}>TRANG CHỦ</Link></li>
                                 <li>
-                                    <a href="#" style={{ padding: "0 24px", }}>
+                                    <Link to={"/loaiSP"} style={{ padding: "0 24px", }}>
                                         SẢN PHẨM
-                                    </a>
+                                    </Link>
                                     <Box className="subnav">
                                         {typeProducts.map((typeProduct: any) =>
                                             <li>
