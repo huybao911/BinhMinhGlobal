@@ -5,7 +5,6 @@ import { AdminActions } from "../types/admin";
 import types from "./types";
 
 const URI = "https://binhminhglobal-backend.onrender.com/api/v1/admin";
-const USER_URI = "http://localhost:5000/api/v1/user";
 
 // LOAD ADMIN
 export const loadAdmin = () => async (dispatch: Dispatch<AdminActions>) => {

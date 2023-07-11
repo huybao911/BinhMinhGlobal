@@ -32,7 +32,6 @@ const Main = styled('div')(({ theme }) => ({
   flexGrow: 2,
   // marginLeft: 270,
   minHeight: '100%',
-  paddingTop: APP_BAR_MOBILE + 24,
   
   [theme.breakpoints.up('lg')]: {
     paddingTop: APP_BAR_DESKTOP + 24,

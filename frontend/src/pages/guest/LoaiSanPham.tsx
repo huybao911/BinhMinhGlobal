@@ -1,9 +1,11 @@
 import React from 'react';
-import { styled } from "@material-ui/core/styles";
+import { styled, makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct, getTypeProduct } from "../../redux/actions/user";
 import { RootState } from "../../redux/reducers";
-import { AppBar, Box, Badge, Toolbar, Typography, InputAdornment, OutlinedInput, Button, Divider, Grid } from '@mui/material';
+import { AppBar, Box, Badge, Toolbar, Typography, InputAdornment, OutlinedInput, Divider, Grid, Pagination, Stack } from '@mui/material';
+
+import { Button } from '@material-ui/core'
 
 import { Link } from "react-router-dom";
 import "./SlideShow.css";
@@ -13,6 +15,8 @@ import { ITypeProduct } from "../../redux/types/typeproduct";
 
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import usePagination from "./Pagination";
 
 const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
     width: 240,
@@ -36,9 +40,20 @@ const StyledRoot = styled(AppBar)(() => ({
     fontWeight: 'bold',
 }));
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .Mui-selected': {
+            backgroundColor: '#0066BF',
+            color: 'white',
+        },
+    }
+}),
+);
+
 const Guest: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch();
+    const classes = useStyles();
     const [localItems, setLocalItems] = React.useState(JSON.parse(localStorage.getItem("productList")!) || []);
     const mapProductList = localItems.flatMap((arr: any) => arr)
 
@@ -137,6 +152,17 @@ const Guest: React.FC = (): JSX.Element => {
         setFilterName(keyword);
     };
 
+    let [page, setPage] = React.useState(1);
+    const PER_PAGE = 12;
+
+    const count = Math.ceil(products.length / PER_PAGE);
+    const _DATA = usePagination(products, PER_PAGE);
+
+    const handleChange = (e: any, p: any) => {
+        setPage(p);
+        _DATA.jump(p);
+    };
+
     React.useEffect(() => {
         document.title = "Trang Chủ";
     }, []);
@@ -196,7 +222,9 @@ const Guest: React.FC = (): JSX.Element => {
                                             )}
                                         </Box>
                                     </li>
-                                    <li><a style={{ padding: "0 24px", }} href="#contact">TIN TỨC</a></li>
+                                    <li><Link to={'/tintuc'} style={{
+                                        padding: "0 24px",
+                                    }}>TIN TỨC</Link></li>
                                 </ul>
                             </Box>
                             <Box>
@@ -219,11 +247,21 @@ const Guest: React.FC = (): JSX.Element => {
                         </Box>
                     </StyledRoot>
                 </Box>
-                <Box sx={{ textAlign: "center", marginTop: "60px" }}>
-
-                    <Box sx={{ borderColor: "#0066BF", margin: "auto", maxWidth: "1500px" }} display={'flex'}>
+                <Box display={'flex'} flexDirection={'column'} sx={{ textAlign: "center", marginTop: "60px", margin: "auto", maxWidth: "1500px" }}>
+                    <Box sx={{fontSize:"25px", fontWeight:"bold", margin: "100px 0 50px 175px", display: "flex", justifyContent: "left"}}>SẢN PHẨM</Box>
+                    <Box sx={{ display: "flex", justifyContent: "right" }}>
+                        <Pagination
+                            count={count}
+                            page={page}
+                            variant="outlined"
+                            shape="circular"
+                            onChange={handleChange}
+                            className={classes.root}
+                        />
+                    </Box>
+                    <Box display={'flex'}>
                         <Grid container style={{ margin: "0px 100px 0px 160px" }}>
-                            {products.map((product: any) =>
+                            {_DATA.currentData().map((product: any) =>
                                 <Grid xs={3} key={product._id} style={{ margin: "20px 0px", maxWidth: "300px" }} >
                                     <Box className="photo">
                                         <img className="imgHover" style={{ transition: '0.5s all ease-in-out', width: "270px", height: "240px" }} src={product.image} />
@@ -241,7 +279,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             </Button>
                                         </Link>
 
-                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", borderRadius: "5px", height: "39px" }}>
                                             Mua Hàng
                                         </Button>
                                     </Box>
@@ -249,8 +287,18 @@ const Guest: React.FC = (): JSX.Element => {
                             )}
                         </Grid>
                     </Box>
+                    <Box sx={{ display: "flex", justifyContent: "right", marginTop: "30px" }}>
+                        <Pagination
+                            count={count}
+                            page={page}
+                            variant="outlined"
+                            shape="circular"
+                            onChange={handleChange}
+                            className={classes.root}
+                        />
+                    </Box>
                 </Box>
-                <Box sx={{ marginTop: "150px" }} className="footer" display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                <Box sx={{ marginTop: "100px" }} className="footer" display={'flex'} alignItems={'center'} justifyContent={'center'}>
                     <Box display={'flex'} flexDirection={'row'} sx={{ padding: "30px 160px 0px 160px" }}>
                         <Box display={'flex'} flexDirection={'column'}>
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>THÔNG TIN LIÊN HỆ</Box>
@@ -277,10 +325,10 @@ const Guest: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>ĐƯỜNG DẪN NHANH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
+                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     TRANG CHỦ
                                 </Box>
-                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
+                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     SẢN PHẨM
                                 </Box>
                                 <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
@@ -293,20 +341,28 @@ const Guest: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>CHÍNH SÁCH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-thanh-toan'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách thanh toán
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-giao-hang'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách giao hàng
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-bao-hanh'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách bảo hành
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-bao-mat-thong-tin'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách bảo mật thông tin
                                 </Box>
                             </Box>
                         </Box>
+                        <a href="tel:0799177960" className="hotlinemp all" rel="nofollow">
+                            <div className="mypage-alo-phone" style={{ left: "0px" }}>
+                                <div className="animated infinite zoomIn mypage-alo-ph-circle"></div>
+                                <div className="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+                                <div className="animated infinite tada mypage-alo-ph-img-circle" style={{ backgroundColor: "red" }}></div>
+                                <span>0799177960</span>
+                            </div>
+                        </a>
                     </Box>
                 </Box>
             </Box>

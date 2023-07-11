@@ -235,7 +235,9 @@ const Cart: React.FC = (): JSX.Element => {
                                         )}
                                     </Box>
                                 </li>
-                                <li><a style={{ padding: "0 24px", }} href="#contact">TIN TỨC</a></li>
+                                <li><Link to={'/tintuc'} style={{
+                                    padding: "0 24px",
+                                }}>TIN TỨC</Link></li>
                             </ul>
                         </Box>
                         <Box>
@@ -539,10 +541,10 @@ const Cart: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>ĐƯỜNG DẪN NHANH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
+                                <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     TRANG CHỦ
                                 </Box>
-                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration:"none", color:"white" }}>
+                                <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     SẢN PHẨM
                                 </Box>
                                 <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
@@ -555,20 +557,28 @@ const Cart: React.FC = (): JSX.Element => {
                             <Box sx={{ fontSize: "16px", fontFamily: "Roboto", fontWeight: "bold", color: "white", float: "left" }}>CHÍNH SÁCH</Box>
                             <Divider style={{ border: "1px solid white", marginTop: "20px", width: "370px", float: "left" }} />
                             <Box sx={{ fontFamily: "Roboto", float: "left", display: "flex", flexDirection: "column" }}>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-thanh-toan'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách thanh toán
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-giao-hang'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách giao hàng
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-bao-hanh'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách bảo hành
                                 </Box>
-                                <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5 }}>
+                                <Box component={Link} to={'/chinh-sach-bao-mat-thong-tin'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
                                     Chính sách bảo mật thông tin
                                 </Box>
                             </Box>
                         </Box>
+                        <a href="tel:0799177960" className="hotlinemp all" rel="nofollow">
+                            <div className="mypage-alo-phone" style={{ left: "0px" }}>
+                                <div className="animated infinite zoomIn mypage-alo-ph-circle"></div>
+                                <div className="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+                                <div className="animated infinite tada mypage-alo-ph-img-circle" style={{ backgroundColor: "red" }}></div>
+                                <span>0799177960</span>
+                            </div>
+                        </a>
                     </Box>
                 </Box>
             </Box>
