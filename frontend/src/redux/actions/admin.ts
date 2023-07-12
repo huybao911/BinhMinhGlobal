@@ -4,7 +4,7 @@ import { setAdminAuthToken } from "../../utils/headers";
 import { AdminActions } from "../types/admin";
 import types from "./types";
 
-const URI = "http://localhost:5000/api/v1/admin";
+const URI = "https://binh-minh-global-api.vercel.app/api/v1/admin";
 
 // LOAD ADMIN
 export const loadAdmin = () => async (dispatch: Dispatch<AdminActions>) => {
