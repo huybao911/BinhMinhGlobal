@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: "5px 0",
-        width: 300,
+        width: 365,
     },
 }))
 
@@ -678,7 +678,7 @@ const Cart: React.FC = (): JSX.Element => {
                                 {({ isSubmitting, handleSubmit, values, handleChange, handleBlur, errors, touched }) => (
                                     <form noValidate onSubmit={handleSubmit}>
                                         <Box display={"flex"} flexDirection={'column'}>
-                                            <Box sx={{ margin: "0 10px 30px 12px", border: "1px solid #e1e1e1", width: "365px" }}>
+                                            <Box sx={{ margin: "30px auto", border: "1px solid #e1e1e1", width: "365px" }}>
                                                 <Box>
                                                     <Box sx={{ borderBottom: "1px solid #e1e1e1" }}>
                                                         <Typography style={{ fontWeight: "bold", fontSize: "20px", margin: "50px 0 10px 30px" }} >
@@ -742,7 +742,7 @@ const Cart: React.FC = (): JSX.Element => {
                                             <Box display={"flex"}
                                                 flexDirection={'column'}
                                                 justifyContent={'center'}
-                                                style={{ backgroundColor: 'white', borderRadius: '20px', margin: "0 12px" }}>
+                                                style={{ backgroundColor: 'white', borderRadius: '20px', margin: "0 auto" }}>
                                                 <Typography style={{ fontWeight: "bold", fontSize: "20px", margin: "20px 0 0 0" }} >
                                                     Thông tin thanh toán
                                                 </Typography>
