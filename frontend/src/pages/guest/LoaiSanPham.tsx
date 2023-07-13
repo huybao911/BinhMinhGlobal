@@ -459,7 +459,7 @@ const Guest: React.FC = (): JSX.Element => {
                                 />
                             </Box>
                             {_DATA.currentData().map((product: any) =>
-                                <Box key={product._id} sx={{ margin: "30px 0" }} >
+                                <Box display={'flex'} flexDirection={'column'} key={product._id} sx={{ margin: "30px auto" }}>
                                     <Box className="photo">
                                         <img className="imgHover" style={{ width: "357px", height: "327px" }} src={product.image} />
                                     </Box>
