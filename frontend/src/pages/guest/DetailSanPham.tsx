@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, makeStyles } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct, getTypeProduct } from "../../redux/actions/user";
 import { RootState } from "../../redux/reducers";
@@ -12,6 +12,9 @@ import { ITypeProduct } from "../../redux/types/typeproduct";
 
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MenuIcon from '@mui/icons-material/Menu';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
     width: 240,
@@ -28,47 +31,18 @@ const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
     },
 }));
 
-const useStyles = makeStyles((theme) => ({
-    textfield: {
-        '& .MuiSelect-select': {
-            color: 'black', fontSize: '12px'
-        },
-        '& .MuiSvgIcon-root': {
-            fontSize: '20px', paddingRight: '2px'
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderRadius: '20px',
-            },
-            '&.Mui-focused fieldset': {
-                border: "1px solid black",
-            }
-        },
-        '& label.Mui-focused': {
-            color: 'black',
-        },
-        '& fieldset': {
-            borderRadius: '30px',
-            height: "46px"
-        },
-
+const StyledSearchMobile = styled(OutlinedInput)(({ theme }) => ({
+    width: 340,
+    borderRadius: '0px',
+    fontSize: '13px',
+    height: "42px",
+    backgroundColor: "white",
+    marginTop: "4px",
+    '& fieldset': {
+        borderWidth: `1px !important`,
+        borderColor: '#rgba(0, 0, 0, 0.87)'
     },
-    hoverDetail: {
-        '&: hover': {
-            color: 'green',
-        },
-    },
-    typeProduct: {
-        border: "2px solid #0066BF"
-    },
-    nameTypeProduct: {
-        backgroundColor: "#0066BF",
-        fontSize: "16px",
-        fontFamily: "Roboto",
-        color: "white",
-        padding: "10px 0px"
-    },
-}))
+}));
 
 const StyledRoot = styled(AppBar)(() => ({
     boxShadow: 'none',
@@ -186,8 +160,373 @@ const DetailSanPham: React.FC = (): JSX.Element => {
     };
 
     React.useEffect(() => {
-        document.title = "Trang Chủ";
+        document.title = "Chi Tiết Sản Phẩm";
     }, []);
+
+    const useViewport = () => {
+        const [width, setWidth] = React.useState(window.innerWidth);
+
+        React.useEffect(() => {
+            const handleWindowResize = () => setWidth(window.innerWidth);
+            window.addEventListener("resize", handleWindowResize);
+            return () => window.removeEventListener("resize", handleWindowResize);
+        }, []);
+
+        return { width };
+    };
+    const viewPort = useViewport();
+    const isIpad = viewPort.width <= 1024 && viewPort.width > 420;
+    const isMobile = viewPort.width <= 420
+
+    const [showNavbar, setShowNavbar] = React.useState(false)
+
+    const handleShowNavbar = () => {
+        setShowNavbar(!showNavbar)
+    }
+
+    const [showProduct, setShowProduct] = React.useState(false)
+
+    const handleShowProduct = () => {
+        setShowProduct(!showProduct)
+    }
+
+    const menuProduct = !showProduct ? (
+        <Box sx={{ height: 0, transition: "all 0.5s ease-in-out" }} />
+    ) : (
+        <Box className={`nav-products  ${showProduct && 'active'}`}>
+            {typeProducts.map((typeProduct: any) =>
+                <li>
+                    <Link style={{ textDecoration: "none" }} to={`/loaiSP1/${typeProduct._id}`}>
+                        <Box sx={{ color: "white", fontWeight: 400, fontSize: 13, fontFamily: "Roboto", display: "flex", flexDirection: "row", margin: "15px 0" }}>
+                            <Box sx={{ width: "9px", height: "9px", borderRadius: "50%", border: "1px solid white", margin: "3px 5px 0 0" }} />{typeProduct.nameTypeProduct}
+                        </Box>
+                    </Link>
+
+                </li>
+            )}
+        </Box>
+    )
+
+    const menuProductArrow = !showProduct ? (
+        <KeyboardArrowDownIcon onClick={handleShowProduct} style={{ color: "white", margin: "-2px 19px 0 0" }} />
+    ) : (
+        <ExpandLessIcon onClick={handleShowProduct} style={{ color: "white", margin: "-2px 19px 0 0" }} />
+    )
+
+    const menu = showNavbar ? (
+        <Box sx={{ height: 0, transition: "all 0.5s ease-in-out" }} />
+    ) : (
+        <Box className={`nav-elements  ${showNavbar && 'active'}`}>
+            <Divider style={{ height: 1 }} />
+            <ul style={{ marginLeft: "-20px" }}>
+                <li>
+                    <Link style={{ textDecoration: "none", fontWeight: "bold", color: "white" }} to="/">TRANG CHỦ</Link>
+                </li>
+                <li style={{ margin: "23px 0" }}>
+                    <Box display={'flex'} flexDirection={'row'}>
+                        <Link style={{ textDecoration: "none", fontWeight: "bold", color: "white" }} to="/LoaiSP">SẢN PHẨM</Link>
+                        <Box flexGrow={1} />
+                        {menuProductArrow}
+                    </Box>
+                    {menuProduct}
+                </li>
+                <li>
+                    <Link style={{ textDecoration: "none", fontWeight: "bold", color: "white" }} to="/tintuc">TIN TỨC</Link>
+                </li>
+            </ul>
+        </Box>
+    )
+
+    if (isIpad) {
+        return (
+            <Box >
+                <Box>
+                    <Box>
+                        <Box sx={{ backgroundImage: "url(/backgroundHeader.jpg)", height: "234px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                            <Link style={{ textDecoration: 'none', margin: "10px auto" }} to={'/'}>
+                                <img src="/logoBM.png" style={{ height: "90px", width: "90px" }}></img>
+                            </Link>
+                            <Box sx={{ fontSize: "30px", fontWeight: "bold", color: "red", textAlign: "center" }}>BÌNH MINH GLOBAL</Box>
+                            <Box sx={{ fontSize: "19px", fontWeight: "bold", color: "#0066BF", textAlign: "center" }}> NHÀ CUNG CẤP SỐ 1 VỀ BỒN NƯỚC VÀ NĂNG LƯỢNG MẶT TRỜI</Box>
+                        </Box>
+                        <Box sx={{ backgroundColor: "#0066BF", maxHeight: "600px", display: "flex", flexDirection: "column" }}>
+                            <Box display={'flex'} flexDirection={'row'} sx={{ margin: "15px 20px" }} >
+                                <MenuIcon onClick={handleShowNavbar} style={{ color: "white" }} />
+                                <Box flexGrow={1} />
+                                <Box component={Link} to={"/order"} >
+                                    <Badge color="error" badgeContent={mapProductList.length}>
+                                        <ShoppingCartIcon style={{ color: "white" }} />{" "}
+                                    </Badge>
+                                </Box>
+                            </Box>
+                            {menu}
+                            <Box display={'flex'} justifyContent={'center'}>
+                                <StyledSearchMobile
+                                    value={filterName}
+                                    onChange={handleFilterByName}
+                                    placeholder="Tìm kiếm sản phẩm..."
+                                    startAdornment={
+                                        <InputAdornment position="start" style={{ paddingLeft: 1.3 }}>
+                                            <SearchIcon style={{ width: '16px' }} sx={{ color: 'rgba(0, 0, 0, 0.87)' }} />
+                                        </InputAdornment>
+                                    }
+                                />
+                            </Box>
+                        </Box>
+                        {products.map((product: any) =>
+                            <Box key={product._id} display={'flex'} flexDirection={'column'} sx={{ margin: "30px 15px" }}>
+                                <Box display={'flex'} flexDirection={'row'}>
+                                    <Box display={'flex'} flexDirection={'column'}>
+                                        <Box className="photo">
+                                            <img className="imgHover" style={{ transition: '0.5s all ease-in-out', width: "300px" }} src={product.image} />
+                                        </Box>
+                                        <Box sx={{ margin: "15px 0px 5px 50px" }}>
+                                            <img style={{ width: "90px", border: "1px solid #0066bf" }} src={product.image} />
+                                        </Box>
+                                    </Box>
+                                    <Box sx={{ margin: "0 20px" }}>
+                                        <Box sx={{ fontSize: "24px", fontFamily: "Roboto" }}>
+                                            {product.nameProduct}
+                                        </Box>
+                                        <Box sx={{ fontSize: "22px", fontFamily: "Roboto", color: "#DD0000", fontWeight: "bold", paddingTop: "10px", paddingBottom: "30px" }}>
+                                            {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
+                                        </Box>
+                                        <Box sx={{ fontSize: "16px", fontFamily: "Roboto", color: "#333333", lineHeight: 1.5, letterSpacing: 0.7 }} dangerouslySetInnerHTML={{ __html: product.productDetail }} />
+                                        <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "40px", alignItems: "center", justifyContent: "center" }}>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "white", backgroundColor: "black", marginRight: "10px", height: "46px", padding: "0px 18px", fontSize: "15px", width: "200px" }}>
+                                                    MUA HÀNG
+                                                </Button>
+                                            </Link>
+                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "white", backgroundColor: "#3CB371", fontSize: "15px", width: "220px", height: "48px" }}>
+                                                THÊM VÀO GIỎ HÀNG
+                                            </Button>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                                <Box display={'flex'} flexDirection={'column'} sx={{ margin: "auto" }}>
+                                    <Box sx={{ margin: "20px 0px 0px 0px" }} >
+                                        <Typography style={{ fontWeight: "bold", color: "#0066bf", fontSize: "16px" }}>
+                                            MÔ TẢ
+                                        </Typography>
+                                        <Divider style={{ border: "1px solid #0066bf", width: "780px" }} />
+                                        <Box sx={{ marginTop: "20px", maxWidth: "1000px", lineHeight: 1.8, letterSpacing: 0.7 }} dangerouslySetInnerHTML={{ __html: product.productDescription }} />
+                                    </Box>
+                                </Box>
+                            </Box>
+                        )}
+                    </Box>
+                    <Box className="footer">
+                        <Box sx={{ display: "flex", flexDirection: "column", margin: "0 10px" }}>
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                THÔNG TIN LIÊN HỆ
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box style={{ fontWeight: "bold", fontSize: "14px", float: "left", letterSpacing: 0.5, marginTop: "20px" }}>
+                                Hệ Thống Chi Nhánh Bình Minh Solar
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "10px 0px", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 1: 369C Tân Thới Hiệp 21, P. Tân Thới Hiệp, Q.12, Tp. Hồ Chí Minh
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 2: 196 Nguyễn Tri Phương, Thành phố Biên Hòa, Đồng Nai
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "10px 0px", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 3: Mỹ Phước Tân Vạn, TP. Thủ Dầu Một, Bình Dương
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 4: KCN Đức Hòa – Long An
+                            </Box>
+
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                ĐƯỜNG DẪN NHANH
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                TRANG CHỦ
+                            </Box>
+                            <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                SẢN PHẨM
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                TIN TỨC
+                            </Box>
+                            <img src='/BoCongThuong.png' style={{ width: "200px", height: "76px" }} />
+
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                CHÍNH SÁCH
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box component={Link} to={'/chinh-sach-thanh-toan'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách thanh toán
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-giao-hang'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách giao hàng
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-bao-hanh'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách bảo hành
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-bao-mat-thong-tin'} style={{ fontSize: "14px", float: "left", margin: "0 0 20px -2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách bảo mật thông tin
+                            </Box>
+                        </Box>
+                    </Box>
+                    <a href="tel:0799177960" className="hotlinemp all" rel="nofollow">
+                        <div className="mypage-alo-phone" style={{ left: "0px" }}>
+                            <div className="animated infinite zoomIn mypage-alo-ph-circle"></div>
+                            <div className="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+                            <div className="animated infinite tada mypage-alo-ph-img-circle" style={{ backgroundColor: "red" }}></div>
+                            <span>0799177960</span>
+                        </div>
+                    </a>
+                </Box>
+            </Box>
+        )
+    }
+    if (isMobile) {
+        return (
+            <Box >
+                <Box>
+                    <Box>
+                        <Box sx={{ backgroundImage: "url(/backgroundHeader.jpg)", height: "234px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                            <Link style={{ textDecoration: 'none', margin: "10px auto" }} to={'/'}>
+                                <img src="/logoBM.png" style={{ height: "90px", width: "90px" }}></img>
+                            </Link>
+                            <Box sx={{ fontSize: "30px", fontWeight: "bold", color: "red", textAlign: "center" }}>BÌNH MINH GLOBAL</Box>
+                            <Box sx={{ fontSize: "19px", fontWeight: "bold", color: "#0066BF", textAlign: "center" }}> NHÀ CUNG CẤP SỐ 1 VỀ BỒN NƯỚC VÀ NĂNG LƯỢNG MẶT TRỜI</Box>
+                        </Box>
+                        <Box sx={{ backgroundColor: "#0066BF", maxHeight: "600px", display: "flex", flexDirection: "column" }}>
+                            <Box display={'flex'} flexDirection={'row'} sx={{ margin: "15px 20px" }} >
+                                <MenuIcon onClick={handleShowNavbar} style={{ color: "white" }} />
+                                <Box flexGrow={1} />
+                                <Box component={Link} to={"/order"} >
+                                    <Badge color="error" badgeContent={mapProductList.length}>
+                                        <ShoppingCartIcon style={{ color: "white" }} />{" "}
+                                    </Badge>
+                                </Box>
+                            </Box>
+                            {menu}
+                            <Box display={'flex'} justifyContent={'center'}>
+                                <StyledSearchMobile
+                                    value={filterName}
+                                    onChange={handleFilterByName}
+                                    placeholder="Tìm kiếm sản phẩm..."
+                                    startAdornment={
+                                        <InputAdornment position="start" style={{ paddingLeft: 1.3 }}>
+                                            <SearchIcon style={{ width: '16px' }} sx={{ color: 'rgba(0, 0, 0, 0.87)' }} />
+                                        </InputAdornment>
+                                    }
+                                />
+                            </Box>
+                        </Box>
+                        {products.map((product: any) =>
+                            <Box key={product._id} display={'flex'} flexDirection={'column'} sx={{ margin: "30px 15px" }}>
+                                <Box>
+                                    <Box display={'flex'} justifyContent={'center'} className="photo">
+                                        <img className="imgHover" style={{ transition: '0.5s all ease-in-out', width: "338px" }} src={product.image} />
+                                    </Box>
+                                    <Box display={'flex'} justifyContent={'center'} sx={{ margin: "15px 0px 5px 0px" }}>
+                                        <img style={{ width: "90px", border: "1px solid #0066bf" }} src={product.image} />
+                                    </Box>
+                                </Box>
+                                <Box sx={{marginTop:"20px"}}>
+                                    <Box sx={{ fontSize: "24px", fontFamily: "Roboto", fontWeight:"bold" }}>
+                                        {product.nameProduct}
+                                    </Box>
+                                    <Box sx={{ fontSize: "22px", fontFamily: "Roboto", color: "#DD0000", fontWeight: "bold", paddingTop: "10px", paddingBottom: "30px" }}>
+                                        {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
+                                    </Box>
+                                    <Box sx={{ fontSize: "16px", fontFamily: "Roboto", color: "#333333", lineHeight: 1.5, letterSpacing: 0.7 }} dangerouslySetInnerHTML={{ __html: product.productDetail }} />
+                                    <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "40px", alignItems: "center", justifyContent: "center" }}>
+                                        <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "white", backgroundColor: "black", marginRight: "10px", height: "46px", padding: "0px 18px", fontSize: "13px", width: "160px" }}>
+                                                MUA HÀNG
+                                            </Button>
+                                        </Link>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "white", backgroundColor: "#3CB371", fontSize: "13px", width: "190px", height: "48px" }}>
+                                            THÊM VÀO GIỎ HÀNG
+                                        </Button>
+                                    </Box>
+                                </Box>
+                                <Box display={'flex'} flexDirection={'column'} sx={{ margin: "auto" }}>
+                                    <Box sx={{ margin: "20px 0px 0px 0px" }} >
+                                        <Typography style={{ fontWeight: "bold", color: "#0066bf", fontSize: "16px" }}>
+                                            MÔ TẢ
+                                        </Typography>
+                                        <Divider style={{ border: "1px solid #0066bf", width: "360px" }} />
+                                        <Box sx={{ marginTop: "20px", maxWidth: "1000px", lineHeight: 1.8, letterSpacing: 0.7 }} dangerouslySetInnerHTML={{ __html: product.productDescription }} />
+                                    </Box>
+                                </Box>
+                            </Box>
+                        )}
+                    </Box>
+                    <Box className="footer">
+                        <Box sx={{ display: "flex", flexDirection: "column", margin: "0 10px" }}>
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                THÔNG TIN LIÊN HỆ
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box style={{ fontWeight: "bold", fontSize: "14px", float: "left", letterSpacing: 0.5, marginTop: "20px" }}>
+                                Hệ Thống Chi Nhánh Bình Minh Solar
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "10px 0px", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 1: 369C Tân Thới Hiệp 21, P. Tân Thới Hiệp, Q.12, Tp. Hồ Chí Minh
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 2: 196 Nguyễn Tri Phương, Thành phố Biên Hòa, Đồng Nai
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "10px 0px", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 3: Mỹ Phước Tân Vạn, TP. Thủ Dầu Một, Bình Dương
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, lineHeight: 1.8 }}>
+                                Chi Nhánh 4: KCN Đức Hòa – Long An
+                            </Box>
+
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                ĐƯỜNG DẪN NHANH
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box component={Link} to={'/'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                TRANG CHỦ
+                            </Box>
+                            <Box component={Link} to={'/LoaiSP'} style={{ fontSize: "14px", float: "left", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                SẢN PHẨM
+                            </Box>
+                            <Box style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5 }}>
+                                TIN TỨC
+                            </Box>
+                            <img src='/BoCongThuong.png' style={{ width: "200px", height: "76px" }} />
+
+                            <Box sx={{ fontSize: "16px", fontWeight: "bold", color: "white", margin: "20px 0" }}>
+                                CHÍNH SÁCH
+                            </Box>
+                            <Divider style={{ height: 1, backgroundColor: "white" }} />
+                            <Box component={Link} to={'/chinh-sach-thanh-toan'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách thanh toán
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-giao-hang'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách giao hàng
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-bao-hanh'} style={{ fontSize: "14px", float: "left", marginLeft: "-2px", textAlign: "left", margin: "20px 0px", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách bảo hành
+                            </Box>
+                            <Box component={Link} to={'/chinh-sach-bao-mat-thong-tin'} style={{ fontSize: "14px", float: "left", margin: "0 0 20px -2px", textAlign: "left", letterSpacing: 0.5, textDecoration: "none", color: "white" }}>
+                                Chính sách bảo mật thông tin
+                            </Box>
+                        </Box>
+                    </Box>
+                    <a href="tel:0799177960" className="hotlinemp all" rel="nofollow">
+                        <div className="mypage-alo-phone" style={{ left: "0px" }}>
+                            <div className="animated infinite zoomIn mypage-alo-ph-circle"></div>
+                            <div className="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+                            <div className="animated infinite tada mypage-alo-ph-img-circle" style={{ backgroundColor: "red" }}></div>
+                            <span>0799177960</span>
+                        </div>
+                    </a>
+                </Box>
+            </Box>
+        )
+    }
     return (
         <Box>
             <Box>

@@ -677,8 +677,8 @@ const Cart: React.FC = (): JSX.Element => {
                             >
                                 {({ isSubmitting, handleSubmit, values, handleChange, handleBlur, errors, touched }) => (
                                     <form noValidate onSubmit={handleSubmit}>
-                                        <Box display={"flex"} flexDirection={'column'}>                                          
-                                            <Box sx={{ margin: "0 10px 30px 10px", border: "1px solid #e1e1e1", width: "365px" }}>
+                                        <Box display={"flex"} flexDirection={'column'}>
+                                            <Box sx={{ margin: "0 10px 30px 12px", border: "1px solid #e1e1e1", width: "365px" }}>
                                                 <Box>
                                                     <Box sx={{ borderBottom: "1px solid #e1e1e1" }}>
                                                         <Typography style={{ fontWeight: "bold", fontSize: "20px", margin: "50px 0 10px 30px" }} >
@@ -700,7 +700,7 @@ const Cart: React.FC = (): JSX.Element => {
                                                                     <Box sx={{ maxWidth: "170px", margin: "15px 0 10px 0", fontWeight: "bold" }}>
                                                                         {product.nameProduct}
                                                                     </Box>
-                                                                    <Box sx={{ maxWidth: "170px",fontFamily: "Roboto" }}>
+                                                                    <Box sx={{ maxWidth: "170px", fontFamily: "Roboto" }}>
                                                                         {product.nameTypeProduct}
                                                                     </Box>
                                                                 </Box>
@@ -730,44 +730,11 @@ const Cart: React.FC = (): JSX.Element => {
                                                             </Box>
                                                         </Box>
                                                     </Box>
-                                                    <Box sx={{ margin: "20px 20px 0 20px" }} display={'flex'} flexDirection={'row'}>
+                                                    <Box sx={{ margin: "20px" }} display={'flex'} flexDirection={'row'}>
                                                         <Box>Tổng cộng</Box>
                                                         <Box flexGrow={1} />
                                                         <Box sx={{ color: "#0066BF" }}>
                                                             {new Intl.NumberFormat('de-DE').format(productMapPrice.reduce((a: any, b: any) => a + b))} VNĐ
-                                                        </Box>
-                                                    </Box>
-                                                    <Box sx={{ margin: "20px 20px 0 20px" }} display={'flex'} flexDirection={'row'}>
-                                                        <Box>
-                                                            <Button style={{
-                                                                color: "#0066BF",
-                                                                height: "34px",
-                                                                width: "150px",
-                                                                fontSize: "14px",
-                                                                fontWeight: 500,
-                                                                borderRadius: "4px",
-                                                                textTransform: "inherit",
-                                                            }}
-                                                                onClick={history.goBack}
-                                                            >  <ArrowBackIosIcon style={{ color: "#0066BF", width: "13px", marginBottom: "1px" }} />Quay về giỏ hàng</Button>
-                                                        </Box>
-                                                        <Box flexGrow={1} />
-                                                        <Box sx={{ marginBottom: "30px" }}>
-                                                            <Button
-                                                                type='submit'
-                                                                style={{
-                                                                    color: "white",
-                                                                    backgroundColor: "#0066BF",
-                                                                    height: "34px",
-                                                                    width: "120px",
-                                                                    fontSize: "12px",
-                                                                    borderRadius: "4px",
-                                                                    fontWeight: 500,
-                                                                }}
-                                                                disabled={isSubmitting}
-                                                            >
-                                                                {isSubmitting ? <CircularProgress size='1rem' /> : "Đặt hàng"}
-                                                            </Button>
                                                         </Box>
                                                     </Box>
                                                 </Box>
@@ -775,8 +742,8 @@ const Cart: React.FC = (): JSX.Element => {
                                             <Box display={"flex"}
                                                 flexDirection={'column'}
                                                 justifyContent={'center'}
-                                                style={{ backgroundColor: 'white', borderRadius: '20px', margin: "0 10px" }}>
-                                                <Typography style={{ fontWeight: "bold", fontSize: "20px", margin: "50px 0 0 0" }} >
+                                                style={{ backgroundColor: 'white', borderRadius: '20px', margin: "0 12px" }}>
+                                                <Typography style={{ fontWeight: "bold", fontSize: "20px", margin: "20px 0 0 0" }} >
                                                     Thông tin thanh toán
                                                 </Typography>
 
@@ -913,6 +880,39 @@ const Cart: React.FC = (): JSX.Element => {
                                                         name="note"
                                                     />
                                                 </FormControl>
+                                            </Box>
+                                            <Box sx={{ margin: "0 20px" }} display={'flex'} flexDirection={'row'}>
+                                                <Box>
+                                                    <Button style={{
+                                                        color: "#0066BF",
+                                                        height: "34px",
+                                                        width: "150px",
+                                                        fontSize: "14px",
+                                                        fontWeight: 500,
+                                                        borderRadius: "4px",
+                                                        textTransform: "inherit",
+                                                    }}
+                                                        onClick={history.goBack}
+                                                    >  <ArrowBackIosIcon style={{ color: "#0066BF", width: "13px", marginBottom: "1px" }} />Quay về giỏ hàng</Button>
+                                                </Box>
+                                                <Box flexGrow={1} />
+                                                <Box sx={{ marginBottom: "30px" }}>
+                                                    <Button
+                                                        type='submit'
+                                                        style={{
+                                                            color: "white",
+                                                            backgroundColor: "#0066BF",
+                                                            height: "34px",
+                                                            width: "120px",
+                                                            fontSize: "12px",
+                                                            borderRadius: "4px",
+                                                            fontWeight: 500,
+                                                        }}
+                                                        disabled={isSubmitting}
+                                                    >
+                                                        {isSubmitting ? <CircularProgress size='1rem' /> : "Đặt hàng"}
+                                                    </Button>
+                                                </Box>
                                             </Box>
                                         </Box>
                                     </form>

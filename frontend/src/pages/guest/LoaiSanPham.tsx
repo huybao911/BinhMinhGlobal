@@ -294,7 +294,7 @@ const Guest: React.FC = (): JSX.Element => {
                             </Box>
                         </Box>
                         <Box sx={{ fontSize: "25px", fontWeight: "bold", margin: "30px 0 30px 15px", display: "flex", justifyContent: "left" }}>SẢN PHẨM</Box>
-                        <Box display={'flex'} flexDirection={'column'}  sx={{ margin: "0 15px 0 40px" }}>
+                        <Box display={'flex'} flexDirection={'column'} sx={{ margin: "0 15px 0 40px" }}>
                             <Box sx={{ display: "flex", justifyContent: "right" }}>
                                 <Pagination
                                     count={count}
@@ -318,7 +318,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center", maxWidth: "358px" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
                                                     Chi Tiết
                                                 </Button>
@@ -458,32 +458,29 @@ const Guest: React.FC = (): JSX.Element => {
                                     className={classes.root}
                                 />
                             </Box>
-                            <Grid container>
-                                {_DATA.currentData().map((product: any) =>
-                                    <Grid xs={6} key={product._id} style={{ margin: "20px 0", maxWidth: "358px" }} >
-                                        <Box className="photo">
-                                            <img className="imgHover" style={{ transition: '0.5s all ease-in-out', width: "358px", height: "328px" }} src={product.image} />
-                                        </Box>
-                                        <Box sx={{ fontSize: "16px", fontWeight: "bold", fontFamily: "Roboto", textAlign: "center", maxWidth: "358px" }}>
-                                            {product.nameProduct}
-                                        </Box>
-                                        <Box sx={{ fontSize: "14px", fontWeight: "bold", color: "red", marginTop: "15px", textAlign: "center" }}>
-                                            {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
-                                        </Box>
-                                        <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center", maxWidth: "358px" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
-                                                <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
-                                                    Chi Tiết
-                                                </Button>
-                                            </Link>
-
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", borderRadius: "5px", height: "39px" }}>
-                                                Mua Hàng
+                            {_DATA.currentData().map((product: any) =>
+                                <Box key={product._id} sx={{ margin: "30px 0" }} >
+                                    <Box className="photo">
+                                        <img className="imgHover" style={{ width: "357px", height: "327px" }} src={product.image} />
+                                    </Box>
+                                    <Box sx={{ fontSize: "16px", fontWeight: "bold", fontFamily: "Roboto", maxWidth: "352px", textAlign: "center" }}>
+                                        {product.nameProduct}
+                                    </Box>
+                                    <Box sx={{ fontSize: "14px", fontWeight: "bold", color: "red", marginTop: "15px", textAlign: "center" }}>
+                                        {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
+                                    </Box>
+                                    <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
+                                        <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
+                                            <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
+                                                Chi Tiết
                                             </Button>
-                                        </Box>
-                                    </Grid>
-                                )}
-                            </Grid>
+                                        </Link>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", height: "39px" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Box>
+                                </Box>
+                            )}
                             <Box sx={{ display: "flex", justifyContent: "right", marginBottom: "30px" }}>
                                 <Pagination
                                     count={count}

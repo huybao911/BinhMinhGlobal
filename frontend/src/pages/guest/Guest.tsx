@@ -415,7 +415,7 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
@@ -449,7 +449,7 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
@@ -483,7 +483,7 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
@@ -516,7 +516,7 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
@@ -550,7 +550,7 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
                                                         Chi Tiết
                                                     </Button>
@@ -746,7 +746,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
@@ -780,7 +780,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
@@ -814,7 +814,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
@@ -847,7 +847,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
@@ -881,7 +881,7 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
                                                     Chi Tiết
                                                 </Button>

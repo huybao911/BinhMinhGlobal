@@ -294,7 +294,7 @@ const Order: React.FC = (): JSX.Element => {
                                     </Box>
                                 </Box>
                                 <Box display={'flex'} justifyContent={'center'} sx={{ margin: "20px 15px" }}>
-                                    <Link to={"/cart"}>
+                                    <Link style={{textDecoration:"none"}} to={"/cart"}>
                                         <Button style={{ textTransform: "inherit", color: "white", backgroundColor: "#0066bf", borderRadius: "2px", width: "300px" }}>Thanh toán</Button>
                                     </Link>
                                 </Box>
