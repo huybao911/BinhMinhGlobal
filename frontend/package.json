@@ -1,6 +1,7 @@
 {
   "name": "test-app",
   "version": "0.1.0",
+  "homepage": "http://nlbinhminh.vn",
   "private": true,
   "dependencies": {
     "@achrinza/node-ipc": "^9.2.7",

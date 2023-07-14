@@ -415,14 +415,16 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
                                                 </Link>
-                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                    Mua Hàng
-                                                </Button>
+                                                <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                        Mua Hàng
+                                                    </Button>
+                                                </Link>
                                             </Box>
                                         </Box>
                                     )}
@@ -449,14 +451,16 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
                                                 </Link>
-                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                    Mua Hàng
-                                                </Button>
+                                                <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                        Mua Hàng
+                                                    </Button>
+                                                </Link>
                                             </Box>
                                         </Box>
                                     )}
@@ -483,14 +487,16 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
                                                 </Link>
-                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                    Mua Hàng
-                                                </Button>
+                                                <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                        Mua Hàng
+                                                    </Button>
+                                                </Link>
                                             </Box>
                                         </Box>
                                     )}
@@ -516,14 +522,16 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                         Chi Tiết
                                                     </Button>
                                                 </Link>
-                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                    Mua Hàng
-                                                </Button>
+                                                <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                        Mua Hàng
+                                                    </Button>
+                                                </Link>
                                             </Box>
                                         </Box>
                                     )}
@@ -550,14 +558,16 @@ const Guest: React.FC = (): JSX.Element => {
                                                 {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                             </Box>
                                             <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                                <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                                <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                     <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
                                                         Chi Tiết
                                                     </Button>
                                                 </Link>
-                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                    Mua Hàng
-                                                </Button>
+                                                <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                        Mua Hàng
+                                                    </Button>
+                                                </Link>
                                             </Box>
                                         </Box>
                                     )}
@@ -746,14 +756,16 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
                                             </Link>
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                Mua Hàng
-                                            </Button>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                    Mua Hàng
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     </Box>
                                 )}
@@ -780,14 +792,16 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
                                             </Link>
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                Mua Hàng
-                                            </Button>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                    Mua Hàng
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     </Box>
                                 )}
@@ -814,14 +828,16 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
                                             </Link>
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                Mua Hàng
-                                            </Button>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                    Mua Hàng
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     </Box>
                                 )}
@@ -847,14 +863,16 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px", fontSize: "10px" }}>
                                                     Chi Tiết
                                                 </Button>
                                             </Link>
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                Mua Hàng
-                                            </Button>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                    Mua Hàng
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     </Box>
                                 )}
@@ -881,14 +899,16 @@ const Guest: React.FC = (): JSX.Element => {
                                             {new Intl.NumberFormat('de-DE').format(product.price)} VNĐ
                                         </Box>
                                         <Box display={'flex'} flexDirection={'row'} sx={{ marginTop: "10px", alignItems: "center", justifyContent: "center" }}>
-                                            <Link style={{ textDecoration: 'none'}} to={`/chitietloaiSP/${product._id}`}>
+                                            <Link style={{ textDecoration: 'none' }} to={`/chitietloaiSP/${product._id}`}>
                                                 <Button style={{ color: "white", backgroundColor: "black", marginRight: "5px", height: "39px", padding: "0px 18px" }}>
                                                     Chi Tiết
                                                 </Button>
                                             </Link>
-                                            <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
-                                                Mua Hàng
-                                            </Button>
+                                            <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                                <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black", fontSize: "10px", height: "39px" }}>
+                                                    Mua Hàng
+                                                </Button>
+                                            </Link>
                                         </Box>
                                     </Box>
                                 )}
@@ -1143,9 +1163,11 @@ const Guest: React.FC = (): JSX.Element => {
                                             Chi Tiết
                                         </Button>
                                     </Link>
-                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
-                                        Mua Hàng
-                                    </Button>
+                                    <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         )}
@@ -1177,9 +1199,11 @@ const Guest: React.FC = (): JSX.Element => {
                                             Chi Tiết
                                         </Button>
                                     </Link>
-                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
-                                        Mua Hàng
-                                    </Button>
+                                    <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         )}
@@ -1211,9 +1235,11 @@ const Guest: React.FC = (): JSX.Element => {
                                             Chi Tiết
                                         </Button>
                                     </Link>
-                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
-                                        Mua Hàng
-                                    </Button>
+                                    <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         )}
@@ -1245,9 +1271,11 @@ const Guest: React.FC = (): JSX.Element => {
                                             Chi Tiết
                                         </Button>
                                     </Link>
-                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
-                                        Mua Hàng
-                                    </Button>
+                                    <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         )}
@@ -1279,9 +1307,11 @@ const Guest: React.FC = (): JSX.Element => {
                                             Chi Tiết
                                         </Button>
                                     </Link>
-                                    <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
-                                        Mua Hàng
-                                    </Button>
+                                    <Link style={{ textDecoration: 'none' }} to={"/order"}>
+                                        <Button onClick={() => handleClick(products.filter((products: any) => products._id === product._id), product._id, product.nameProduct, product.image, product.price, product.typeProduct.nameTypeProduct)} style={{ color: "black", backgroundColor: "white", border: "1px solid black" }}>
+                                            Mua Hàng
+                                        </Button>
+                                    </Link>
                                 </Box>
                             </Box>
                         )}
